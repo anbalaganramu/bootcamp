@@ -1,37 +1,13 @@
 package automate_dashboard_functionality;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Test;
 
-public class CreateNewDashboard {
-	public static void main(String[] args) throws InterruptedException {
-		ChromeOptions options=new ChromeOptions();
-		options.addArguments("--disable-notifications");
-		options.addArguments("--remote-allow-origins=*");
-		
-		ChromeDriver driver=new ChromeDriver(options);
-		// Login to https://login.salesforce.com/
-		driver.get("https://login.salesforce.com/");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		// Enter Username
-		driver.findElement(By.id("username")).sendKeys("hari.radhakrishnan@qeagle.com");
-		// Enter Password
-		driver.findElement(By.id("password")).sendKeys("Leaf@1234");
-		// Click Login Button
-		driver.findElement(By.id("Login")).click();
-		
-		Thread.sleep(3000);
-		//Click on the toggle menu button from the left corner
-		driver.findElement(By.className("slds-icon-waffle")).click();
-		//Click View All 
-		driver.findElement(By.xpath("//button[text()='View All']")).click();
-		
-		
+public class CreateNewDashboard extends Base{
+	
+	@Test
+	public void runCreateNewDashboard() throws InterruptedException {
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys("Dashboards");
 		Thread.sleep(3000);
@@ -44,7 +20,7 @@ public class CreateNewDashboard {
 		
 		
 		// Enter Name as 'Salesforce Automation by Your Name ' 
-		driver.findElement(By.id("dashboardNameInput")).sendKeys("Salesforce Automation by Anbu");
+		driver.findElement(By.id("dashboardNameInput")).sendKeys("Anbu_Task");
 		Thread.sleep(3000);
 		// Click on Create
 		driver.findElement(By.id("submitBtn")).click();
@@ -61,6 +37,8 @@ public class CreateNewDashboard {
 		driver.findElement(By.xpath("//button[text()='Done']")).click();
 		String cText = driver.findElement(By.xpath("//div[@class='slds-page-header__name-title']")).getText();
 		System.out.println(cText);		
+		
+		driver.close();
 	}
 
 }
