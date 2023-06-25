@@ -54,10 +54,17 @@ public class CreateNewDashboard {
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
 		// Click on Save
 		driver.findElement(By.xpath("//button[text()='Save']")).click();
+		driver.switchTo().defaultContent();
+		String sText = driver.findElement(By.xpath("//span[text()='Dashboard saved']")).getText();
+		System.out.println(sText);
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
-		WebElement ds = driver.findElement(By.xpath("//span[text()='Dashboard saved']"));		
 		driver.findElement(By.xpath("//button[text()='Done']")).click();
-		System.out.println(ds);
+//			
+//		System.out.println(ds);
+		
+		 String cText = driver.findElement(By.xpath("//div[@class='slds-page-header__name-title']")).getText();
+		
+		System.out.println(cText);
 		
 //		WebElement savebtn = driver.findElement(By.xpath("//button[text()='Save']"));
 //		driver.executeScript("arguments[0].click();", savebtn);
@@ -70,8 +77,6 @@ public class CreateNewDashboard {
 //		Thread.sleep(3000);
 //		driver.switchTo().defaultContent();
 //		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
-		
-		
 		
 	}
 
