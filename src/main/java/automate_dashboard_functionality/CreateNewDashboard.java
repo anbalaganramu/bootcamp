@@ -20,25 +20,29 @@ public class CreateNewDashboard extends Base{
 		
 		
 		// Enter Name as 'Salesforce Automation by Your Name ' 
-		driver.findElement(By.id("dashboardNameInput")).sendKeys("Anbu_Task");
+		driver.findElement(By.id("dashboardNameInput")).sendKeys("Anbu My TestLeaf");
 		Thread.sleep(3000);
 		// Click on Create
 		driver.findElement(By.id("submitBtn")).click();
 		
-		Thread.sleep(3000);
-//		driver.switchTo().defaultContent();
+		Thread.sleep(5000);
+		driver.switchTo().defaultContent();
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
+		Thread.sleep(5000);
 		// Click on Save
-		driver.findElement(By.xpath("//button[text()='Save']")).click();
+		WebElement clickSave = driver.findElement(By.xpath("//button[text()='Save']"));
+		clickSave.click();
 		driver.switchTo().defaultContent();
 		String sText = driver.findElement(By.xpath("//span[text()='Dashboard saved']")).getText();
 		System.out.println(sText);
+		Thread.sleep(5000);
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='dashboard']")));
-		driver.findElement(By.xpath("//button[text()='Done']")).click();
-		String cText = driver.findElement(By.xpath("//div[@class='slds-page-header__name-title']")).getText();
+		WebElement clickDone = driver.findElement(By.xpath("//button[text()='Done']"));
+		clickDone.click();		String cText = driver.findElement(By.xpath("//div[@class='slds-page-header__name-title']")).getText();
 		System.out.println(cText);		
+		System.out.println("Welldone");
 		
-		driver.close();
+		
 	}
 
 }

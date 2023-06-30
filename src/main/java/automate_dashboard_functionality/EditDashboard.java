@@ -9,20 +9,45 @@ public class EditDashboard extends Base{
 	public void runEditDashboard() throws InterruptedException {
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys("Dashboards");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		driver.findElement(By.xpath("//p[@class='slds-truncate']/mark[text()='Dashboards']")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//input[@placeholder='Search recent dashboards...']")).sendKeys("Anbu_Task");	
-		Thread.sleep(3000);
+		Thread.sleep(5000);
+		WebElement sElement = driver.findElement(By.xpath("//input[@placeholder='Search recent dashboards...']"));
 		
-		WebElement myelement = driver.findElement(By.xpath("//a[@title='Anbu_Task']/span[@class='highlightSearchText']"));
-		driver.executeScript("arguments[0].click", myelement);
-		System.out.println("Clicked");
+		sElement.sendKeys("Anbu");	
+		Thread.sleep(3000);
+	//	WebElement myelement = driver.findElement(By.xpath("//a[@title='Anbu']"));
+		WebElement myelement = driver.findElement(By.xpath("//span[@class='highlightSearchText']"));
 		
-//		WebElement editframe = driver.findElement(By.xpath("//iframe[@title='dashboard']"));
-//		driver.switchTo().frame(editframe);
-//		
-//		driver.findElement(By.xpath("//button[text()='Edit']")).click();
+		//myelement.click();
+		driver.executeScript("arguments[0].click()", myelement);
+		Thread.sleep(5000);
+		System.out.println("Clicked"); 
+		
+		WebElement editframe = driver.findElement(By.xpath("//iframe[@title='dashboard']"));
+		driver.switchTo().frame(editframe);
+		Thread.sleep(5000);
+		WebElement editClick = driver.findElement(By.xpath("//button[text()='Edit']"));
+		driver.executeScript("arguments[0].click()", editClick);
+		Thread.sleep(5000);
+		WebElement editpropertyClick = driver.findElement(By.xpath("//button[@title='Edit Dashboard Properties']"));
+		driver.executeScript("arguments[0].click()", editpropertyClick);
+		driver.findElement(By.id("dashboardDescriptionInput")).sendKeys("Testleaf salesforce");
+		driver.findElement(By.id("submitBtn")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//button[text()='Done']")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//footer/button[text()='Save']")).click();
+		Thread.sleep(5000);
+		String dtitle = driver.findElement(By.xpath("//h1/span[contains(@class,'slds-page-header__title slds-truncate')]")).getText();
+
+		System.out.println(dtitle);
+		
+		String ddesc = driver.findElement(By.xpath("//p[@class='slds-page-header__info']")).getText();
+		
+		System.out.println(ddesc);
+		
+		
 	}
 
 }
