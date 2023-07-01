@@ -5,6 +5,7 @@
     <classes>
       <class name="automate_dashboard_functionality.CreateNewDashboard"/>
       <class name="automate_dashboard_functionality.EditDashboard"/>
+      <class name="automate_dashboard_functionality.DeleteDashboard"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
