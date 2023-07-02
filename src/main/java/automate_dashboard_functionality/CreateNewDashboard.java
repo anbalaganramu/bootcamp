@@ -20,7 +20,7 @@ public class CreateNewDashboard extends Base{
 		
 		
 		// Enter Name as 'Salesforce Automation by Your Name ' 
-		driver.findElement(By.id("dashboardNameInput")).sendKeys("Anbu Sunday");
+		driver.findElement(By.id("dashboardNameInput")).sendKeys("Anbu July First Sunday");
 		Thread.sleep(3000);
 		// Click on Create
 		driver.findElement(By.id("submitBtn")).click();
