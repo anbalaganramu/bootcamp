@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class DeleteDashboard extends Base{
 	@Test
-	public void runEditDashboard() throws InterruptedException {
+	public void runDeleteDashboard() throws InterruptedException {
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Search apps or items...']")).sendKeys("Dashboards");
 		Thread.sleep(3000);
