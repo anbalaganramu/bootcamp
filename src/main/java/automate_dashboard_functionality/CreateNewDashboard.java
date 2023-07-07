@@ -42,8 +42,6 @@ public class CreateNewDashboard extends Base{
 		System.out.println(cText);		
 		System.out.println("Welldone");
 		
-		
-		
 	}
 
 }

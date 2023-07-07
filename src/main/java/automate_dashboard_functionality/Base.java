@@ -6,29 +6,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
-//import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 public class Base {
 	
 	public ChromeDriver driver;
 	
+	@Parameters({"url","username","password"})
 	@BeforeMethod()
 	
-	public void precondition() throws InterruptedException {
+	public void precondition(String url,String userName,String passWord) throws InterruptedException {
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		options.addArguments("--remote-allow-origins=*");
 		
 		driver=new ChromeDriver(options);
 		// Login to https://login.salesforce.com/
-		driver.get("https://login.salesforce.com/");
+		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		// Enter Username
-		driver.findElement(By.id("username")).sendKeys("hari.radhakrishnan@qeagle.com");
+		driver.findElement(By.id("username")).sendKeys(userName);
 		// Enter Password
-		driver.findElement(By.id("password")).sendKeys("Leaf@1234");
+		driver.findElement(By.id("password")).sendKeys(passWord);
 		// Click Login Button
 		driver.findElement(By.id("Login")).click();
 		
